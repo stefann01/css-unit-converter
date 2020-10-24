@@ -1,0 +1,58 @@
+.light {
+  .entireContainer {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAADklEQVQIW2NgQAXGZHAAGioAza6+Hk0AAAAASUVORK5CYII=");
+    background-color: rgba(0, 0, 0, 0.26);
+  }
+
+  .tableCellEven {
+    background-color: white;
+    border-bottom: none !important;
+  }
+
+  .tableCellOdd {
+    background-color: #f6f6f6;
+    border-bottom: none !important;
+  }
+
+  .title {
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  //Textfield input
+  .MuiFormControl-fullWidth > label {
+    color: #000;
+  }
+  .MuiFormControl-fullWidth > div {
+    color: #000;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .MuiFormControl-fullWidth > div::before {
+    border-color: #1976d2;
+  }
+
+  // .MuiFormControl-fullWidth > div:hover::before {
+  //   border-color: #f57c00;
+  // }
+
+  .MuiFormControl-fullWidth > div::after {
+    border-color: #388e3c;
+  }
+
+  .MuiFormLabel-root.Mui-focused {
+    color: #388e3c;
+  }
+
+  //table
+  .tableCell {
+    border-radius: 1px solid black;
+  }
+  .tableCellHeader {
+    background-color: #64b5f6;
+    color: white;
+  }
+
+  .settingsIcon {
+    color: black;
+  }
+}
