@@ -7,9 +7,8 @@ import {
 } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider/Slider";
 import React from "react";
-import { useColorContext } from "../../context/color-context";
-import ColorEncoding from "../../model/color-encoding.enum";
-import ColorConverter from "../../service/color-converter";
+import { useColorContext } from "../../../../context/color-context";
+import ColorEncoding from "../../../../model/color-encoding.enum";
 export class SliderModel {
   constructor(
     public min: number,
@@ -29,7 +28,7 @@ interface IColorCardProps {
 function ColorCard(props: IColorCardProps) {
   const colorContext = useColorContext();
   return (
-    <Card>
+    <Card className={"card"}>
       <CardHeader
         title={
           <span
@@ -39,11 +38,7 @@ function ColorCard(props: IColorCardProps) {
               justifyContent: "space-around",
             }}
           >
-            <Typography>{props.title}</Typography>
-            <Button
-              variant="contained"
-              style={{ backgroundColor: colorContext.hexColor }}
-            ></Button>
+            <Typography className={"text"}>{props.title}</Typography>
           </span>
         }
       />
@@ -51,8 +46,9 @@ function ColorCard(props: IColorCardProps) {
         {props.sliders.map((slide, index) => {
           return (
             <>
-              <Typography>{slide.title}</Typography>
+              <Typography className={"text"}>{slide.title}</Typography>
               <Slider
+                className={"slider"}
                 key={index}
                 value={slide.value}
                 min={slide.min}
@@ -69,7 +65,6 @@ function ColorCard(props: IColorCardProps) {
             </>
           );
         })}
-        <Typography>{props.text}</Typography>
       </CardContent>
     </Card>
   );

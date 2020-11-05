@@ -1,8 +1,8 @@
 enum ColorEncoding {
-  Hex,
-  Cmyk,
-  Hsla,
-  Hsb,
-  Rgba,
+  Hex = "hex",
+  Cmyk = "cmyk",
+  Hsla = "hsl",
+  Hsv = "hsv",
+  Rgba = "rgb",
 }
 export default ColorEncoding;

@@ -13,6 +13,8 @@ const initialValue = {
   hexColor: "#000000",
   rgbColor: [0, 0, 0],
   cmykColor: [0, 0, 0, 100],
+  hslColor: [0, 0, 0],
+  hsvColor: [0, 0, 0],
 };
 
 export const ColorContextProvider = (props: any) => {
@@ -23,6 +25,7 @@ export const ColorContextProvider = (props: any) => {
         hexColor: state.hexColor,
         rgbColor: state.rgbColor,
         cmykColor: state.cmykColor,
+        hslColor: state.hslColor,
         dispatch,
       }}
     >

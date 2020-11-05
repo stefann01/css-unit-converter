@@ -74,4 +74,66 @@ export default class ColorConverter {
     const rgb = ColorConverter.cmykToRgb(cyan, magenta, yellow, key);
     return ColorConverter.rgbToHex(rgb[0], rgb[1], rgb[2]);
   }
+
+  public static rgbToHsl(red: number, green: number, blue: number) {
+    const redP = red / 255;
+    const greenP = green / 255;
+    const blueP = blue / 255;
+    const cMax = Math.max(redP, greenP, blueP);
+    const cMin = Math.min(redP, greenP, blueP);
+    const delta = cMax - cMin;
+    let hue = 0;
+    let saturation = 0;
+    let lightness = (cMax + cMin) / 2;
+
+    switch (delta) {
+      case 0:
+        saturation = 0;
+      default:
+        saturation = delta / (1 - Math.abs(2 * lightness - 1));
+    }
+
+    if (delta === 0) {
+      hue = 0;
+    } else if (cMax === redP) {
+      hue = 60 * (((greenP - blueP) / delta) % 6);
+    } else if (cMax === greenP) {
+      hue = 60 * ((blueP - redP) / delta + 2);
+    } else if (cMax === blueP) {
+      hue = 60 * ((redP - greenP) / delta + 4);
+    }
+    return [hue, saturation, lightness];
+  }
+
+  public static hslToRgb(hue: number, saturation: number, luminance: number) {
+    let red,
+      green,
+      blue = 0;
+    if (saturation === 0) {
+      red = green = blue = saturation;
+    } else {
+      var hue2rgb = function hue2rgb(p, q, t) {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+        return p;
+      };
+
+      var q =
+        luminance < 0.5
+          ? luminance * (1 + saturation)
+          : luminance + saturation - luminance * saturation;
+      var p = 2 * luminance - q;
+      red = hue2rgb(p, q, hue + 1 / 3);
+      green = hue2rgb(p, q, hue);
+      blue = hue2rgb(p, q, hue - 1 / 3);
+    }
+    return [
+      Math.round(red * 255),
+      Math.round(green * 255),
+      Math.round(blue * 255),
+    ];
+  }
 }
