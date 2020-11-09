@@ -1,5 +1,6 @@
 import {
   Button,
+  ButtonGroup,
   Card,
   CardContent,
   CardHeader,
@@ -9,6 +10,7 @@ import Slider from "@material-ui/core/Slider/Slider";
 import React from "react";
 import { useColorContext } from "../../../../context/color-context";
 import ColorEncoding from "../../../../model/color-encoding.enum";
+import styles from "./color-card.module.scss";
 export class SliderModel {
   constructor(
     public min: number,
@@ -46,7 +48,52 @@ function ColorCard(props: IColorCardProps) {
         {props.sliders.map((slide, index) => {
           return (
             <>
-              <Typography className={"text"}>{slide.title}</Typography>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <Typography className={"text"}>{slide.title}</Typography>
+                <ButtonGroup
+                  color="primary"
+                  aria-label="outlined primary button group"
+                  style={{ marginLeft: "auto" }}
+                >
+                  <Button
+                    size="small"
+                    className={styles.changeValueButton}
+                    onClick={() => {
+                      if (slide.value < 255) {
+                        colorContext.dispatch({
+                          type: props.type,
+                          payload: { index, value: slide.value + 1 },
+                        });
+                      }
+                    }}
+                  >
+                    +
+                  </Button>
+
+                  <Button
+                    size="small"
+                    disabled
+                    className={styles.changeValueButtonDisabled}
+                  >
+                    {slide.value}
+                  </Button>
+                  <Button
+                    size="small"
+                    className={styles.changeValueButton}
+                    onClick={() => {
+                      if (slide.value > 0) {
+                        colorContext.dispatch({
+                          type: props.type,
+                          payload: { index, value: slide.value - 1 },
+                        });
+                      }
+                    }}
+                  >
+                    -
+                  </Button>
+                </ButtonGroup>
+              </div>
+
               <Slider
                 className={"slider"}
                 key={index}

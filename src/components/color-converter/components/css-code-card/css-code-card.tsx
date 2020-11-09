@@ -1,10 +1,23 @@
-import { Box, Button, Grid, Typography } from "@material-ui/core";
+import { Box, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { useColorContext } from "../../../../context/color-context";
-import { MdContentCopy } from "react-icons/md";
+import FileCopyIcon from "@material-ui/icons/FileCopy";
+import IconButton from "@material-ui/core/IconButton";
+import copy from "copy-to-clipboard";
+import { useSnackbar } from "notistack";
+import CssColorCode from "./components/css-color-code";
 
 export default function CssCodeCard() {
   const colorContext = useColorContext();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+  function copyCodeToClipboard(value: string) {
+    copy(value);
+    enqueueSnackbar("Copied to clipboard", {
+      variant: "success",
+      autoHideDuration: 1200,
+    });
+  }
 
   return (
     <Box
@@ -15,29 +28,18 @@ export default function CssCodeCard() {
       {/* {codes} */}
       <Grid container justify="center">
         <Grid item>
-          <Typography className={"text"}>
-            <code>{`rgb(${colorContext.rgbColor[0]}, ${colorContext.rgbColor[1]}, ${colorContext.rgbColor[2]});`}</code>
-            <Button variant="contained">
-              <MdContentCopy />
-            </Button>
-          </Typography>
-
-          <Typography className={"text"}>
-            <code>
-              {`hsl(${colorContext.hslColor[0]}, ${colorContext.hslColor[1]}, ${colorContext.hslColor[2]});`}
-            </code>
-            <Button variant="contained">
-              <MdContentCopy />
-            </Button>
-          </Typography>
-          <Typography className={"text"}>
-            <code>
-              {`cmyk(${colorContext.cmykColor[0]}, ${colorContext.cmykColor[1]}, ${colorContext.cmykColor[2]}, ${colorContext.cmykColor[3]});`}
-            </code>
-            <Button variant="contained">
-              <MdContentCopy />
-            </Button>
-          </Typography>
+          <CssColorCode
+            value={`hsl(${colorContext.rgbColor[0]}, ${colorContext.rgbColor[1]}, ${colorContext.rgbColor[2]});`}
+          />
+          <CssColorCode
+            value={`hsl(${colorContext.hslColor[0]}, ${colorContext.hslColor[1]}, ${colorContext.hslColor[2]});`}
+          />
+          <CssColorCode
+            value={`cmyk(${colorContext.cmykColor[0]}, ${colorContext.cmykColor[1]}, ${colorContext.cmykColor[2]}, ${colorContext.cmykColor[3]});`}
+          />
+          <CssColorCode
+            value={`hsv(${colorContext.hsvColor[0]}, ${colorContext.hsvColor[1]}, ${colorContext.hsvColor[2]});`}
+          />
         </Grid>
       </Grid>
     </Box>

@@ -7,6 +7,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ThemeProvider } from "./context/theme-context";
 import { IntlProvider } from "react-intl";
+import { SnackbarProvider } from "notistack";
 
 import messages_de from "./translations/de.json";
 import messages_en from "./translations/en.json";
@@ -22,9 +23,17 @@ ReactDOM.render(
   <React.StrictMode>
     <IntlProvider locale="de" messages={messages["de"]}>
       <ThemeProvider>
-        <NavigationProvider>
-          <App />
-        </NavigationProvider>
+        <SnackbarProvider
+          maxSnack={3}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
+          <NavigationProvider>
+            <App />
+          </NavigationProvider>
+        </SnackbarProvider>
       </ThemeProvider>
     </IntlProvider>
   </React.StrictMode>,

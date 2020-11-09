@@ -26,6 +26,7 @@ export const ColorContextProvider = (props: any) => {
         rgbColor: state.rgbColor,
         cmykColor: state.cmykColor,
         hslColor: state.hslColor,
+        hsvColor: state.hsvColor,
         dispatch,
       }}
     >
