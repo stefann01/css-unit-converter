@@ -1,23 +1,12 @@
 import { Box, Grid, Typography } from "@material-ui/core";
 import React from "react";
 import { useColorContext } from "../../../../context/color-context";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
-import IconButton from "@material-ui/core/IconButton";
 import copy from "copy-to-clipboard";
 import { useSnackbar } from "notistack";
 import CssColorCode from "./components/css-color-code";
 
 export default function CssCodeCard() {
   const colorContext = useColorContext();
-  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
-
-  function copyCodeToClipboard(value: string) {
-    copy(value);
-    enqueueSnackbar("Copied to clipboard", {
-      variant: "success",
-      autoHideDuration: 1200,
-    });
-  }
 
   return (
     <Box

@@ -3,8 +3,8 @@ import React from "react";
 import { useColorContext } from "../../../../context/color-context";
 import ColorEncoding from "../../../../model/color-encoding.enum";
 import ColorCard, { SliderModel } from "../card/color-card";
-const xs = 6;
-const sm = 4;
+const xs = 12;
+const sm = 12;
 const md = 6;
 const lg = 3;
 const xl = 3;
@@ -13,7 +13,7 @@ export default function CardsContainer() {
   const colorContext = useColorContext();
   return (
     <Box p={2} className={"colorCardsContainer"}>
-      <Grid container spacing={6} justify="center">
+      <Grid container spacing={4} justify="center">
         <Grid item xs={xs} sm={sm} md={md} lg={lg} xl={xl}>
           <ColorCard
             title={"RGB"}
