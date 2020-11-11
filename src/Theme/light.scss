@@ -18,31 +18,6 @@
     color: rgba(0, 0, 0, 0.87);
   }
 
-  //Textfield input
-  .MuiFormControl-fullWidth > label {
-    color: #000;
-  }
-  .MuiFormControl-fullWidth > div {
-    color: #000;
-    background-color: rgba(255, 255, 255, 0.7);
-  }
-
-  .MuiFormControl-fullWidth > div::before {
-    border-color: #1976d2;
-  }
-
-  // .MuiFormControl-fullWidth > div:hover::before {
-  //   border-color: #f57c00;
-  // }
-
-  .MuiFormControl-fullWidth > div::after {
-    border-color: #388e3c;
-  }
-
-  .MuiFormLabel-root.Mui-focused {
-    color: #388e3c;
-  }
-
   //table
   .tableCell {
     border-radius: 1px solid black;
@@ -54,5 +29,58 @@
 
   .settingsIcon {
     color: black;
+  }
+
+  //colorConverter
+  html,
+  body {
+    background-color: #fcfdfe;
+  }
+
+  .root {
+    background-color: #fcfdfe;
+  }
+
+  .colorCardsContainer {
+    background-color: #f4f7fb;
+  }
+
+  .card {
+    background-color: #ffffff;
+    margin-top: 20px;
+  }
+
+  .text {
+    color: #31424f;
+  }
+
+  .codeContainer {
+    background-color: #fff;
+  }
+
+  .slider {
+    color: #1c83ee;
+  }
+
+  .changeValueButton {
+    color: #e1685b !important;
+    border-color: #e1685b !important;
+  }
+
+  .changeValueButtonDisabled {
+    color: black !important;
+    border-color: #e1685b !important;
+  }
+
+  .cssCode {
+    color: black;
+  }
+  .iconButton:hover {
+    color: #1c83ee !important;
+    background-color: #f4f7fb !important;
+  }
+
+  .copyIcon {
+    color: #1c83ee !important;
   }
 }

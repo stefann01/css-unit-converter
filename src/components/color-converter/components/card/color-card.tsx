@@ -10,7 +10,8 @@ import Slider from "@material-ui/core/Slider/Slider";
 import React from "react";
 import { useColorContext } from "../../../../context/color-context";
 import ColorEncoding from "../../../../model/color-encoding.enum";
-import styles from "./color-card.module.scss";
+import CssColorCode from "../css-code-card/css-color-code";
+import "./color-card.scss";
 export class SliderModel {
   constructor(
     public min: number,
@@ -41,6 +42,14 @@ function ColorCard(props: IColorCardProps) {
             }}
           >
             <Typography className={"text"}>{props.title}</Typography>
+            <div
+              style={{
+                backgroundColor: colorContext.hexColor,
+                width: "50px",
+                height: "20px",
+                borderRadius: "3px",
+              }}
+            ></div>
           </span>
         }
       />
@@ -57,7 +66,7 @@ function ColorCard(props: IColorCardProps) {
                 >
                   <Button
                     size="small"
-                    className={styles.changeValueButton}
+                    className={"changeValueButton"}
                     onClick={() => {
                       if (slide.value < 255) {
                         colorContext.dispatch({
@@ -73,13 +82,13 @@ function ColorCard(props: IColorCardProps) {
                   <Button
                     size="small"
                     disabled
-                    className={styles.changeValueButtonDisabled}
+                    className={"changeValueButtonDisabled"}
                   >
                     {slide.value}
                   </Button>
                   <Button
                     size="small"
-                    className={styles.changeValueButton}
+                    className={"changeValueButton"}
                     onClick={() => {
                       if (slide.value > 0) {
                         colorContext.dispatch({
@@ -113,6 +122,7 @@ function ColorCard(props: IColorCardProps) {
           );
         })}
       </CardContent>
+      <CssColorCode type={props.type} />
     </Card>
   );
 }

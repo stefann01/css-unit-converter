@@ -9,7 +9,7 @@ interface ThemeContextModel {
 const ThemeContext = React.createContext({} as ThemeContextModel);
 
 export const ThemeProvider = (props: any) => {
-  const [theme, setTheme] = useState(Theme.Dark);
+  const [theme, setTheme] = useState(Theme.Light);
   useEffect(() => {
     document.documentElement.classList.add(theme.toLocaleString());
     return () => {

@@ -18,35 +18,6 @@
     color: white;
   }
 
-  //Textfield input
-  .MuiFormControl-fullWidth > label {
-    color: white;
-  }
-  .MuiFormControl-fullWidth > div {
-    color: white;
-    background-color: rgba(255, 255, 255, 0.08);
-  }
-
-  .MuiFormControl-fullWidth > div::before {
-    border-color: #1976d2;
-  }
-
-  // .MuiFormControl-fullWidth > div:hover::before {
-  //   border-color: #f57c00;
-  // }
-
-  .MuiFormControl-fullWidth > div::after {
-    border-color: #388e3c;
-  }
-
-  .MuiFormLabel-root.Mui-focused {
-    color: #388e3c;
-  }
-
-  .MuiFilledInput-underline::after {
-    border-bottom: 2px solid red;
-  }
-
   //table
   .tableCell {
     border-radius: 1px solid black;
@@ -61,6 +32,11 @@
   }
 
   //colorConverter
+  html,
+  body {
+    background-color: #121212;
+  }
+
   .root {
     background-color: #121212;
   }
@@ -83,6 +59,34 @@
   }
 
   .slider {
-    color: #bb86fc;
+    color: #c4876a;
+  }
+
+  .changeValueButton {
+    color: #84c8fa !important;
+    border-color: #84c8fa !important;
+  }
+
+  .changeValueButtonDisabled {
+    color: #eeffee !important;
+    border-color: #84c8fa !important;
+  }
+
+  .hexInput {
+    color: aliceblue !important;
+    background-color: #2d2d2d;
+  }
+
+  .cssCode {
+    color: #e5e5e5;
+  }
+
+  .iconButton:hover {
+    color: #fff !important;
+    background-color: #424242 !important;
+  }
+
+  .copyIcon {
+    color: #fff !important;
   }
 }
