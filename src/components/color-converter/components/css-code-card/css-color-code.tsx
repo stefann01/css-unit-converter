@@ -25,13 +25,13 @@ function getCode(type: ColorEncoding, colorContext) {
       return (
         <code
           className={"cssCode"}
-        >{`hsl(${colorContext.hsvColor[0]}, ${colorContext.hsvColor[1]}, ${colorContext.hsvColor[2]});`}</code>
+        >{`hsv(${colorContext.hsvColor[0]}, ${colorContext.hsvColor[1]}, ${colorContext.hsvColor[2]});`}</code>
       );
     case ColorEncoding.Cmyk:
       return (
         <code
           className={"cssCode"}
-        >{`hsl(${colorContext.cmykColor[0]}, ${colorContext.cmykColor[1]}, ${colorContext.cmykColor[2]}, ${colorContext.cmykColor[3]});`}</code>
+        >{`cmyk(${colorContext.cmykColor[0]}, ${colorContext.cmykColor[1]}, ${colorContext.cmykColor[2]}, ${colorContext.cmykColor[3]});`}</code>
       );
     default:
       return <></>;
