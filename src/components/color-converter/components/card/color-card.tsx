@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  TextField,
   Typography,
 } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider/Slider";
@@ -12,6 +13,12 @@ import { useColorContext } from "../../../../context/color-context";
 import ColorEncoding from "../../../../model/color-encoding.enum";
 import CssColorCode from "../css-code-card/css-color-code";
 import "./color-card.scss";
+
+function isNumberKey(evt) {
+  var charCode = evt.keyCode;
+  if (charCode > 31 && (charCode < 48 || charCode > 57)) return false;
+  return true;
+}
 export class SliderModel {
   constructor(
     public min: number,
@@ -68,7 +75,7 @@ function ColorCard(props: IColorCardProps) {
                     size="small"
                     className={"changeValueButton"}
                     onClick={() => {
-                      if (slide.value < 255) {
+                      if (slide.value < slide.max) {
                         colorContext.dispatch({
                           type: props.type,
                           payload: { index, value: slide.value + 1 },
@@ -79,18 +86,54 @@ function ColorCard(props: IColorCardProps) {
                     +
                   </Button>
 
-                  <Button
-                    size="small"
-                    disabled
-                    className={"changeValueButtonDisabled"}
-                  >
-                    {slide.value}
-                  </Button>
+                  <div className="TextField-without-border-radius">
+                    <TextField
+                      type="number"
+                      inputProps={{
+                        style: {
+                          height: "26px",
+                          width: "64px",
+                          padding: "0",
+                          textAlign: "center",
+                        },
+                      }}
+                      value={slide.value}
+                      // onKeyUp={(e) => {
+                      //   if (e.key === "ArrowUp" && slide.value < slide.max) {
+                      //     colorContext.dispatch({
+                      //       type: props.type,
+                      //       payload: { index, value: slide.value + 1 },
+                      //     });
+                      //   }
+                      // }}
+                      // onKeyDown={(e) => {
+                      //   if (e.key === "ArrowDown" && slide.value > slide.min) {
+                      //     colorContext.dispatch({
+                      //       type: props.type,
+                      //       payload: { index, value: slide.value - 1 },
+                      //     });
+                      //   }
+                      // }}
+                      onChange={(e) => {
+                        if (
+                          e.target.value === "" ||
+                          /^[0-9\b]+$/.test(e.target.value)
+                        ) {
+                          colorContext.dispatch({
+                            type: props.type,
+                            payload: { index, value: e.target.value },
+                          });
+                        }
+                      }}
+                      variant="outlined"
+                    />
+                  </div>
+
                   <Button
                     size="small"
                     className={"changeValueButton"}
                     onClick={() => {
-                      if (slide.value > 0) {
+                      if (slide.value > slide.min) {
                         colorContext.dispatch({
                           type: props.type,
                           payload: { index, value: slide.value - 1 },

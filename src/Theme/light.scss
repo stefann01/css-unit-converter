@@ -83,4 +83,11 @@
   .copyIcon {
     color: #1c83ee !important;
   }
+
+  .TextField-without-border-radius fieldset,
+  .TextField-without-border-radius:hover fieldset:hover,
+  .TextField-without-border-radius:active fieldset:active {
+    border-color: #e1685b !important;
+    border-width: 1px;
+  }
 }

@@ -14,7 +14,7 @@ function renderSelectedComponent(activeComponent: Components) {
     case Components.ColorConverter:
       return (
         <ColorContextProvider>
-          <ColorConverter />;
+          <ColorConverter />
         </ColorContextProvider>
       );
     default:

@@ -7,3 +7,13 @@
 .changeValueButtonDisabled {
   height: 26px !important;
 }
+
+.TextField-without-border-radius fieldset {
+  border-radius: 0% !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

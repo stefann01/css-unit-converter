@@ -15,10 +15,16 @@ export function colorReducer(
 ) {
   switch (action.type) {
     case ColorEncoding.Hex:
-      if (/^#[0-9A-F]{0,6}$/i.test(action.payload.color)) {
-        return action.payload.color;
+      const newState = { ...state };
+      newState.hexColor = action.payload.color;
+      if (/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/i.test(action.payload.color)) {
+        newState.hexColor = action.payload.color;
+        newState.cmykColor = ColorConvert.hex.cmyk(action.payload.color);
+        newState.rgbColor = ColorConvert.hex.rgb(action.payload.color);
+        newState.hslColor = ColorConvert.hex.hsl(action.payload.color);
+        newState.hsvColor = ColorConvert.hex.hsv(action.payload.color);
       }
-      return state;
+      return newState;
     case ColorEncoding.Rgb: {
       const newState = { ...state };
       const index = action.payload.index;
