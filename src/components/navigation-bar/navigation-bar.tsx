@@ -1,4 +1,11 @@
-import { AppBar, Toolbar, IconButton, Button } from "@material-ui/core";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Button,
+  Container,
+  Box,
+} from "@material-ui/core";
 import React from "react";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useNavigationContext } from "../../context/navigation-context";
@@ -9,7 +16,7 @@ export default function NavigationBar() {
   const navigationContext = useNavigationContext();
 
   return (
-    <>
+    <Box width="1">
       <AppBar position="static">
         <Toolbar>
           <IconButton edge="start" color="inherit" aria-label="menu">
@@ -34,6 +41,6 @@ export default function NavigationBar() {
           <ThemeIcon />
         </Toolbar>
       </AppBar>
-    </>
+    </Box>
   );
 }
