@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+
 import Components from "../model/components.enum";
 
 interface NavigationContextModel {
@@ -10,7 +11,7 @@ const NavigationContext = React.createContext({} as NavigationContextModel);
 
 export const NavigationProvider = (props: any) => {
   const [activeComponent, setActiveComponent] = useState(
-    Components.UnitConverter
+    Components.ColorConverter
   );
   return (
     <NavigationContext.Provider value={{ activeComponent, setActiveComponent }}>

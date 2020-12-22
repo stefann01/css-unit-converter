@@ -28,7 +28,7 @@ export function colorReducer(
     case ColorEncoding.Rgb: {
       const newState = { ...state };
       const index = action.payload.index;
-      newState.rgbColor[index] = action.payload.value;
+      newState.rgbColor[index] = action.payload.value || 0;
       newState.hexColor =
         "#" +
         ColorConvert.rgb.hex(
@@ -57,7 +57,7 @@ export function colorReducer(
     case ColorEncoding.Cmyk: {
       const newState = { ...state };
       const index = action.payload.index;
-      newState.cmykColor[index] = action.payload.value;
+      newState.cmykColor[index] = action.payload.value || 0;
       newState.hexColor =
         "#" +
         ColorConvert.cmyk.hex(
@@ -93,7 +93,7 @@ export function colorReducer(
     case ColorEncoding.Hsl: {
       const newState = { ...state };
       const index = action.payload.index;
-      newState.hslColor[index] = action.payload.value;
+      newState.hslColor[index] = action.payload.value || 0;
       newState.hexColor =
         "#" +
         ColorConvert.hsl.hex(
@@ -122,7 +122,7 @@ export function colorReducer(
     case ColorEncoding.Hsv: {
       const newState = { ...state };
       const index = action.payload.index;
-      newState.hsvColor[index] = action.payload.value;
+      newState.hsvColor[index] = action.payload.value || 0;
       newState.hexColor =
         "#" +
         ColorConvert.hsv.hex(

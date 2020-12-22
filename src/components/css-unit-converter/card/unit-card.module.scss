@@ -1,0 +1,26 @@
+.unitCardContainer {
+  position: relative;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.unitCardValueTitle {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  margin: 0;
+}
+
+.copyIcon {
+  position: absolute;
+  font-size: 20px;
+  top: 1rem;
+  right: 1rem;
+}
+
+.unitCardValue {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  margin: 0;
+}

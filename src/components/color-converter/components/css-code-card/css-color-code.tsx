@@ -11,9 +11,11 @@ function getCode(type: ColorEncoding, colorContext) {
   switch (type) {
     case ColorEncoding.Rgb:
       return (
-        <code
-          className={"cssCode"}
-        >{`rgb(${colorContext.rgbColor[0]}, ${colorContext.rgbColor[1]}, ${colorContext.rgbColor[2]});`}</code>
+        <code className={"cssCode"}>{`rgb(${
+          colorContext.rgbColor[0] ? colorContext.rgbColor[0] : 0
+        }, ${colorContext.rgbColor[1] ? colorContext.rgbColor[1] : 0}, ${
+          colorContext.rgbColor[2] ? colorContext.rgbColor[2] : 0
+        });`}</code>
       );
     case ColorEncoding.Hsl:
       return (

@@ -1,8 +1,10 @@
 import { Box, Grid } from "@material-ui/core";
 import React from "react";
+
 import { useColorContext } from "../../../../context/color-context";
 import ColorEncoding from "../../../../model/color-encoding.enum";
 import ColorCard, { SliderModel } from "../card/color-card";
+
 const xs = 12;
 const sm = 12;
 const md = 6;

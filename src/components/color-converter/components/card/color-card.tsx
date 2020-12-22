@@ -9,9 +9,11 @@ import {
 } from "@material-ui/core";
 import Slider from "@material-ui/core/Slider/Slider";
 import React from "react";
+
 import { useColorContext } from "../../../../context/color-context";
 import ColorEncoding from "../../../../model/color-encoding.enum";
 import CssColorCode from "../css-code-card/css-color-code";
+
 import "./color-card.scss";
 
 function isNumberKey(evt) {
@@ -38,7 +40,7 @@ interface IColorCardProps {
 function ColorCard(props: IColorCardProps) {
   const colorContext = useColorContext();
   return (
-    <Card className={"card"}>
+    <Card className={"color-card"}>
       <CardHeader
         title={
           <span
@@ -63,7 +65,7 @@ function ColorCard(props: IColorCardProps) {
       <CardContent>
         {props.sliders.map((slide, index) => {
           return (
-            <>
+            <div key={index}>
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <Typography className={"text"}>{slide.title}</Typography>
                 <ButtonGroup
@@ -78,7 +80,10 @@ function ColorCard(props: IColorCardProps) {
                       if (slide.value < slide.max) {
                         colorContext.dispatch({
                           type: props.type,
-                          payload: { index, value: slide.value + 1 },
+                          payload: {
+                            index,
+                            value: slide.value + 1,
+                          },
                         });
                       }
                     }}
@@ -98,30 +103,15 @@ function ColorCard(props: IColorCardProps) {
                         },
                       }}
                       value={slide.value}
-                      // onKeyUp={(e) => {
-                      //   if (e.key === "ArrowUp" && slide.value < slide.max) {
-                      //     colorContext.dispatch({
-                      //       type: props.type,
-                      //       payload: { index, value: slide.value + 1 },
-                      //     });
-                      //   }
-                      // }}
-                      // onKeyDown={(e) => {
-                      //   if (e.key === "ArrowDown" && slide.value > slide.min) {
-                      //     colorContext.dispatch({
-                      //       type: props.type,
-                      //       payload: { index, value: slide.value - 1 },
-                      //     });
-                      //   }
-                      // }}
                       onChange={(e) => {
                         if (
                           e.target.value === "" ||
-                          /^[0-9\b]+$/.test(e.target.value)
+                          (/^[0-9\b]+$/.test(e.target.value) &&
+                            parseInt(e.target.value) <= slide.max)
                         ) {
                           colorContext.dispatch({
                             type: props.type,
-                            payload: { index, value: e.target.value },
+                            payload: { index, value: parseInt(e.target.value) },
                           });
                         }
                       }}
@@ -161,7 +151,7 @@ function ColorCard(props: IColorCardProps) {
                 valueLabelDisplay="auto"
                 aria-labelledby="non-linear-slider"
               ></Slider>
-            </>
+            </div>
           );
         })}
       </CardContent>

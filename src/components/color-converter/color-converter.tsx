@@ -1,12 +1,13 @@
-import React from "react";
 import { Box, Container } from "@material-ui/core";
-import ColorConverterTitle from "./components/title/color-converter-title";
-import HexInput from "./components/hex-input/hex-input";
+import React from "react";
+
 import CardsContainer from "./components/cards-container/cards-container";
+import HexInput from "./components/hex-input/hex-input";
+import ColorConverterTitle from "./components/title/color-converter-title";
 
 function ColorConverter() {
   return (
-    <Container>
+    <Container style={{ overflowY: "auto", maxHeight: "calc(100% - 64px)" }}>
       <ColorConverterTitle />
       <HexInput />
       <CardsContainer />

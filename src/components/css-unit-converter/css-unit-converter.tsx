@@ -1,22 +1,42 @@
 import React from "react";
+import { useUnitContext } from "../../context/unit-context";
+import UnitMeasures from "../../model/unit-measure.enum";
+import { UnitActions } from "../../reducers/unit-reducer";
 
-import useRows from "../../service/useRows";
-import Card from "./card/card";
+import UnitCard from "./card/card";
 import Controls from "./controls/controls";
 
 import "./css-unit-converter.scss";
 
 export default function UnitConverter() {
-  const { value, setValue, fontBaseSize, setFontBaseSize, rows } = useRows();
+  const unitContext = useUnitContext();
+
+  const handleSelectCard = (unitType: UnitMeasures) => {
+    debugger;
+    unitContext.dispatch({
+      type: UnitActions.Select,
+      payload: { selectedUnit: unitType },
+    });
+  };
 
   return (
     <div className={"parent"}>
       <Controls className="controlsContainer" />
       <div className="container">
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
-        <Card className="card" />
+        <UnitCard
+          unitType={UnitMeasures.PIXELS}
+          value={unitContext.pixelValue}
+          className="card"
+          onSelect={() => handleSelectCard(UnitMeasures.PIXELS)}
+          selected={unitContext.selectedUnit === UnitMeasures.PIXELS}
+        />
+        <UnitCard
+          unitType={UnitMeasures.REMS}
+          value={unitContext.remValue}
+          className="card"
+          onSelect={() => handleSelectCard(UnitMeasures.REMS)}
+          selected={unitContext.selectedUnit === UnitMeasures.REMS}
+        />
       </div>
     </div>
   );
