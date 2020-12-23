@@ -16,23 +16,45 @@ export default function Controls(props) {
       >
         <label>Default font size</label>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <button>+</button>
+          <button
+            onClick={() => {
+              unitContext.dispatch({
+                type: UnitActions.DefaultFontChanged,
+                payload: {
+                  newDefaultFontValue: unitContext.defaultFontValue + 1,
+                },
+              });
+            }}
+          >
+            +
+          </button>
           <input
             min={1}
             max={100}
             value={unitContext.defaultFontValue}
             onChange={(e) => {
-              debugger;
               unitContext.dispatch({
-                type: UnitActions.Convert,
+                type: UnitActions.DefaultFontChanged,
                 payload: {
-                  selectedValue: unitContext.selectedValue,
-                  defaultSelectedValue: parseInt(e.target.value),
+                  newDefaultFontValue: parseInt(e.target.value),
                 },
               });
             }}
           />
-          <button>-</button>
+          <button
+            onClick={() => {
+              if (unitContext.defaultFontValue > 1) {
+                unitContext.dispatch({
+                  type: UnitActions.DefaultFontChanged,
+                  payload: {
+                    newDefaultFontValue: unitContext.defaultFontValue - 1,
+                  },
+                });
+              }
+            }}
+          >
+            -
+          </button>
         </div>
       </div>
       <div
@@ -45,22 +67,40 @@ export default function Controls(props) {
       >
         <label>Value</label>
         <div style={{ display: "flex", flexDirection: "row" }}>
-          <button>+</button>
+          <button
+            onClick={() => {
+              unitContext.dispatch({
+                type: UnitActions.ValueChanged,
+                payload: { newBaseValue: unitContext.baseValue + 1 },
+              });
+            }}
+          >
+            +
+          </button>
           <input
             min={1}
             value={unitContext.baseValue}
             onChange={(e) => {
-              debugger;
               unitContext.dispatch({
-                type: UnitActions.Convert,
+                type: UnitActions.ValueChanged,
                 payload: {
-                  selectedValue: parseInt(e.target.value),
-                  defaultSelectedValue: unitContext.defaultFontValue,
+                  newBaseValue: parseInt(e.target.value),
                 },
               });
             }}
           />
-          <button>-</button>
+          <button
+            onClick={() => {
+              if (unitContext.baseValue > 1) {
+                unitContext.dispatch({
+                  type: UnitActions.ValueChanged,
+                  payload: { newBaseValue: unitContext.baseValue - 1 },
+                });
+              }
+            }}
+          >
+            -
+          </button>
         </div>
       </div>
     </div>

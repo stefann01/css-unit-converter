@@ -15,7 +15,7 @@ export default function UnitConverter() {
     debugger;
     unitContext.dispatch({
       type: UnitActions.Select,
-      payload: { selectedUnit: unitType },
+      payload: { newSelectedUnit: unitType },
     });
   };
 
